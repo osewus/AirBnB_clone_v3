@@ -1,3 +1,17 @@
+#!/usr/bin/python3
+""" Places routes handler """
+from api.v1.views import app_views
+from flask import jsonify, abort, request
+from models import storage
+from models.city import City
+from models.place import Place
+from models.user import User
+from models.state import State
+from api.v1.views.cities import get_all
+from api.v1.views.places_amenities import do_get_amenities
+import json
+
+
 def check(cls, place_id):
     """
         If the place_id is not linked to any Place object, raise a 404 error
@@ -154,4 +168,3 @@ def places_search():
     in the body of the request
     """
     return search(request)
-
